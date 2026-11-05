@@ -1,0 +1,17 @@
+{
+  "name": "small-web-browser",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:api": "npm --workspace=apps/api run dev",
+    "dev:web": "npm --workspace=apps/web run dev",
+    "build": "npm --workspaces run build",
+    "seed": "npm --workspace=apps/api run seed",
+    "typecheck": "npm --workspaces run typecheck"
+  }
+}
+
