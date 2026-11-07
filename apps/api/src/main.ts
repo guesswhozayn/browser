@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PeopleModule } from './people/people.module';
 import { SitesModule } from './sites/sites.module';
+import { VisitsModule } from './visits/visits.module';
 
 @Controller('health')
 class HealthController {
@@ -19,6 +20,7 @@ class HealthController {
     ),
     PeopleModule,
     SitesModule,
+    VisitsModule,
   ],
   controllers: [HealthController],
 })
