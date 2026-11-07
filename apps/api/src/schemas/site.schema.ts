@@ -19,6 +19,9 @@ export class Site {
 
   @Prop({ required: true, trim: true })
   author: string;
+
+  updatedAt?: Date;
+  createdAt?: Date;
 }
 
 export const SiteSchema = SchemaFactory.createForClass(Site);
