@@ -1,6 +1,7 @@
 import { Controller, Get, Module, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PeopleModule } from './people/people.module';
 
 @Controller('health')
 class HealthController {
@@ -15,6 +16,7 @@ class HealthController {
     MongooseModule.forRoot(
       process.env.MONGODB_URI ?? 'mongodb://127.0.0.1:27017/small-web',
     ),
+    PeopleModule,
   ],
   controllers: [HealthController],
 })
