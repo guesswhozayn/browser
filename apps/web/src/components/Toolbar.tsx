@@ -77,7 +77,7 @@ export function Toolbar({
             type="text"
             value={addressInput}
             onChange={(e) => onAddressInputChange(e.target.value)}
-            placeholder={isSearchMode ? "Search web prose..." : "Enter address (e.g. tidepool.zz) or ?search..."}
+            placeholder={isSearchMode ? "Search web prose..." : "Enter address (e.g. androon-lahore.zz) or ?search..."}
             className="h-9 w-full rounded-md border border-stone-300 bg-stone-50 px-3 pr-20 text-sm font-mono text-stone-800 placeholder-stone-400 outline-none transition focus:border-stone-500 focus:bg-white focus:ring-1 focus:ring-stone-500"
             autoCapitalize="off"
             autoCorrect="off"

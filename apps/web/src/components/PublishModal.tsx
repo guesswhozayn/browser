@@ -30,7 +30,7 @@ export function PublishModal({
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState(defaultAuthor);
   const [html, setHtml] = useState(
-    '<article>\n  <h1>Page Title</h1>\n  <p>Write your HTML page here. Link to other sites using standard anchor tags like <a href="tidepool.zz">Tidepool</a>.</p>\n</article>',
+    '<article>\n  <h1>Page Title</h1>\n  <p>Write your HTML page here. Link to other sites using standard anchor tags like <a href="androon-lahore.zz">Androon Lahore</a>.</p>\n</article>',
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -8,7 +8,7 @@ interface BrowserState {
   cursor: number;
 }
 
-export function useBrowserSession(initialAddress = 'tidepool.zz') {
+export function useBrowserSession(initialAddress = 'androon-lahore.zz') {
   const [state, setState] = useState<BrowserState>(() => ({
     entries: [{ type: 'site', address: initialAddress, scrollY: 0 }],
     cursor: 0,
@@ -87,7 +87,7 @@ export function useBrowserSession(initialAddress = 'tidepool.zz') {
     });
   }, []);
 
-  const resetSession = useCallback((address = 'tidepool.zz') => {
+  const resetSession = useCallback((address = 'androon-lahore.zz') => {
     setState({
       entries: [{ type: 'site', address, scrollY: 0 }],
       cursor: 0,

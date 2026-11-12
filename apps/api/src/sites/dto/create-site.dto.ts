@@ -4,7 +4,7 @@ export class CreateSiteDto {
   @IsString()
   @IsNotEmpty()
   @Matches(/^[a-z0-9-]+(\.[a-z0-9-]+)+$/, {
-    message: 'address must be a valid host format (e.g. tidepool.zz)',
+    message: 'address must be a valid host format (e.g. androon-lahore.zz)',
   })
   address: string;
 

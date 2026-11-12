@@ -24,8 +24,8 @@ import {
 
 export default function BrowserHome() {
   const [people, setPeople] = useState<PersonItem[]>([]);
-  const [activePerson, setActivePerson] = useState('Elena Vance');
-  const [addressInput, setAddressInput] = useState('tidepool.zz');
+  const [activePerson, setActivePerson] = useState('Amina Tariq');
+  const [addressInput, setAddressInput] = useState('androon-lahore.zz');
   const [site, setSite] = useState<SitePayload | null>(null);
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -42,7 +42,7 @@ export default function BrowserHome() {
     goForward,
     saveScroll,
     resetSession,
-  } = useBrowserSession('tidepool.zz');
+  } = useBrowserSession('androon-lahore.zz');
 
   const currentScrollYRef = useRef(0);
 
@@ -107,8 +107,8 @@ export default function BrowserHome() {
 
   function handleUserChange(newPerson: string) {
     setActivePerson(newPerson);
-    resetSession('tidepool.zz');
-    recordVisit(newPerson, 'tidepool.zz', 'typed');
+    resetSession('androon-lahore.zz');
+    recordVisit(newPerson, 'androon-lahore.zz', 'typed');
   }
 
   return (
