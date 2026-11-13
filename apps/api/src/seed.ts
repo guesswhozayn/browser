@@ -145,7 +145,6 @@ const SITES = [
 const BASE_TIMESTAMP = new Date('2026-11-05T10:00:00.000Z').getTime();
 
 const VISITS_TIMELINE = [
-  // Kamran Shah: The avid explorer who went everywhere across the small web
   { person: 'Kamran Shah', address: 'potohar-plateau.zz', via: 'typed', offsetSec: 60 },
   { person: 'Kamran Shah', address: 'shalimar-botany.zz', via: 'link', offsetSec: 240 },
   { person: 'Kamran Shah', address: 'androon-lahore.zz', via: 'link', offsetSec: 480 },
@@ -154,39 +153,35 @@ const VISITS_TIMELINE = [
   { person: 'Kamran Shah', address: 'astrolabe-lahore.zz', via: 'link', offsetSec: 1200 },
   { person: 'Kamran Shah', address: 'chawkandi-tombs.zz', via: 'link', offsetSec: 1440 },
   { person: 'Kamran Shah', address: 'anarkali-bazaar.zz', via: 'link', offsetSec: 1680 },
-  { person: 'Kamran Shah', address: 'lost-kutubkhana.zz', via: 'link', offsetSec: 1920 }, // 404 test
+  { person: 'Kamran Shah', address: 'lost-kutubkhana.zz', via: 'link', offsetSec: 1920 },
   { person: 'Kamran Shah', address: 'anarkali-bazaar.zz', via: 'back', offsetSec: 2040 },
   { person: 'Kamran Shah', address: 'androon-lahore.zz', via: 'history', offsetSec: 2280 },
   { person: 'Kamran Shah', address: 'khyber-chronicles.zz', via: 'search', offsetSec: 2520 },
   { person: 'Kamran Shah', address: 'indus-delta.zz', via: 'link', offsetSec: 2760 },
   { person: 'Kamran Shah', address: 'potohar-plateau.zz', via: 'link', offsetSec: 3000 },
 
-  // Amina Tariq: Heritage author checking her own sites and links
   { person: 'Amina Tariq', address: 'androon-lahore.zz', via: 'typed', offsetSec: 180 },
   { person: 'Amina Tariq', address: 'shahi-qila.zz', via: 'link', offsetSec: 420 },
   { person: 'Amina Tariq', address: 'anarkali-bazaar.zz', via: 'typed', offsetSec: 660 },
-  { person: 'Amina Tariq', address: 'rohtas-ruins.zz', via: 'link', offsetSec: 840 }, // 404 test
+  { person: 'Amina Tariq', address: 'rohtas-ruins.zz', via: 'link', offsetSec: 840 },
   { person: 'Amina Tariq', address: 'anarkali-bazaar.zz', via: 'back', offsetSec: 900 },
   { person: 'Amina Tariq', address: 'androon-lahore.zz', via: 'link', offsetSec: 1320 },
   { person: 'Amina Tariq', address: 'shalimar-botany.zz', via: 'search', offsetSec: 1800 },
 
-  // Hamza Malik: Classical arts & astrolabe enthusiast
   { person: 'Hamza Malik', address: 'astrolabe-lahore.zz', via: 'typed', offsetSec: 300 },
   { person: 'Hamza Malik', address: 'sur-sangeet.zz', via: 'link', offsetSec: 540 },
-  { person: 'Hamza Malik', address: 'desert-sufi-relay.zz', via: 'link', offsetSec: 780 }, // 404 test
+  { person: 'Hamza Malik', address: 'desert-sufi-relay.zz', via: 'link', offsetSec: 780 },
   { person: 'Hamza Malik', address: 'sur-sangeet.zz', via: 'back', offsetSec: 840 },
   { person: 'Hamza Malik', address: 'astrolabe-lahore.zz', via: 'back', offsetSec: 960 },
   { person: 'Hamza Malik', address: 'chawkandi-tombs.zz', via: 'link', offsetSec: 1500 },
 
-  // Dr. Zoya Abbasi: Botanist & masonry scholar
   { person: 'Dr. Zoya Abbasi', address: 'shalimar-botany.zz', via: 'typed', offsetSec: 360 },
   { person: 'Dr. Zoya Abbasi', address: 'chawkandi-tombs.zz', via: 'link', offsetSec: 600 },
-  { person: 'Dr. Zoya Abbasi', address: 'makli-mirage.zz', via: 'link', offsetSec: 840 }, // 404 test
+  { person: 'Dr. Zoya Abbasi', address: 'makli-mirage.zz', via: 'link', offsetSec: 840 },
   { person: 'Dr. Zoya Abbasi', address: 'chawkandi-tombs.zz', via: 'back', offsetSec: 900 },
   { person: 'Dr. Zoya Abbasi', address: 'potohar-plateau.zz', via: 'search', offsetSec: 1600 },
   { person: 'Dr. Zoya Abbasi', address: 'shalimar-botany.zz', via: 'history', offsetSec: 2100 },
 
-  // Bilal Qureshi: Regional logistics & hydrology researcher
   { person: 'Bilal Qureshi', address: 'khyber-chronicles.zz', via: 'typed', offsetSec: 400 },
   { person: 'Bilal Qureshi', address: 'indus-delta.zz', via: 'link', offsetSec: 700 },
   { person: 'Bilal Qureshi', address: 'shahi-qila.zz', via: 'link', offsetSec: 1100 },
@@ -203,15 +198,12 @@ async function seed() {
     throw new Error('Database connection failed');
   }
 
-  // Idempotent clean slate for deterministic state
   await db.collection('people').deleteMany({});
   await db.collection('sites').deleteMany({});
   await db.collection('visits').deleteMany({});
 
-  // Seed People
   await db.collection('people').insertMany(PEOPLE);
 
-  // Seed Sites with extracted plain-text and index creation
   const siteDocs = SITES.map((site) => ({
     address: site.address.toLowerCase(),
     title: site.title,
@@ -223,7 +215,6 @@ async function seed() {
   }));
   await db.collection('sites').insertMany(siteDocs);
 
-  // Seed Visits with realistic timestamps over 1 hour
   const visitDocs = VISITS_TIMELINE.map((visit) => ({
     person: visit.person,
     address: visit.address.toLowerCase(),
@@ -232,7 +223,6 @@ async function seed() {
   }));
   await db.collection('visits').insertMany(visitDocs);
 
-  // Ensure indexes exist
   await db.collection('people').createIndex({ name: 1 }, { unique: true });
   await db.collection('sites').createIndex({ address: 1 }, { unique: true });
   await db.collection('sites').createIndex(
